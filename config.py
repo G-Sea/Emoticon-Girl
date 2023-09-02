@@ -8,9 +8,6 @@ emotion = {
     "i_don't_care":[
         'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150485.png'
     ],
-    "ok":[
-        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504835.png'
-    ],
     "i_am_die":[
         'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504878.png'
     ],
