@@ -1,30 +1,27 @@
 emotion = {
-    "smile":[
-        'https://i0.hdslb.com/bfs/article/53b8a2d01e698d6d62cbc6cf51e6070ff3b23b32.jpg',
-        'https://img2.huashi6.com/images/resource/f436223125398/2023/01/13/233625_18575770671.jpg?imageMogr2/quality/100/interlace/1/thumbnail/2000x%3E'
+    "love_forever":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101547775.png'
     ],
     "sad":[
-        'https://i0.hdslb.com/bfs/article/0212435a5ad57b12f9ed6f46bbb8d07f07f38f02.png',
-        'https://i0.hdslb.com/bfs/article/1db1ae14ff713128508e45d856b9757760fc6061.jpg'
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504258.jpg'
     ],
-    "fear":[
-        'https://i0.hdslb.com/bfs/article/5b54b8c27462c6133e58b0f57ba066cc3ba1d3c2.jpg',
-        'https://i0.hdslb.com/bfs/article/e50cf9689a20660476b5a17f3e858d9548fc982d.jpg'
+    "i_don't_care":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150485.png'
     ],
-    "ero":[
-        'https://i0.hdslb.com/bfs/article/20abdd549a552e8b18cf886a6a6d6466b5b95ae7.png',
-        'https://img2.huashi6.com/images/resource/f436223125398/2023/01/13/233625_1857616316.jpg'
+    "ok":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504835.png'
     ],
-    "uncomfort":[
-        'https://i0.hdslb.com/bfs/article/e50cf9689a20660476b5a17f3e858d9548fc982d.jpg'
+    "i_am_die":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504878.png'
     ],
-    "angry":[
-        'https://i0.hdslb.com/bfs/article/1175f556e8a36da4a9fc9dd3ae5d17a0c4cffe60.jpg',
-        'https://i0.hdslb.com/bfs/article/afe8dd534c9d60a7dd9305b225509090b462d6c9.jpg'
+    "sorry":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504618.png'
     ],
-    "excited":[
-        'https://i0.hdslb.com/bfs/article/d0e4af221015f2d7aca1b31629953d3ef78a3f97.jpg',
-        'https://i0.hdslb.com/bfs/article/4adfadad1dd63eeea474e1f6e1a771f19bda9c4d.png'
+    "ok":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504835.png'
+    ],
+    "this":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150417.png'
     ],
     "resist":[
         'pic/resist.jpg']
