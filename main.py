@@ -2,8 +2,6 @@ from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
 from mirai import Image
-sys.path.append('/root/bot/QChatGPT')
-import plugins.Emoticon-Girl.config as config
 import random
 
 """
@@ -14,15 +12,37 @@ import random
 @register(name="Emoticon-Girl", description="表情包表达式转换", version="0.1", author="cillow")
 class HelloPlugin(Plugin):
     
-    # 插件加载时触发
-    # plugin_host (pkg.plugin.host.PluginHost) 提供了与主程序交互的一些方法，详细请查看其源码
-    def __init__(self, plugin_host: PluginHost):
-        pass
-
     # 当收到GPT回复时触发
     @on(NormalMessageResponded)
     def normal_message_responded(self, event: EventContext, **kwargs):
         response_text:str = kwargs['response_text']
+
+        emotion = {
+    "love_forever":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101547775.png'
+    ],
+    "sad":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504258.jpg'
+    ],
+    "i_don't_care":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150485.png'
+    ],
+    "i_am_die":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504878.png'
+    ],
+    "sorry":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504618.png'
+    ],
+    "ok":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504835.png'
+    ],
+    "this":[
+        'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150417.png'
+    ],
+    "resist":[
+        'pic/resist.jpg']
+}
+
 
         import re
         # 后续改一下正则
@@ -31,7 +51,7 @@ class HelloPlugin(Plugin):
             emotion = ma.group()[1:-1]
             logging.info(emotion)
 
-            emotion_dict: dict = config.emotion
+            emotion_dict: dict = emotion
             if emotion in emotion_dict.keys():
                 e_list = emotion_dict[emotion]
                 url = e_list[random.randint(0, len(e_list)-1)]
