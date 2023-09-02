@@ -2,6 +2,7 @@ from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
 from mirai import Image
+sys.path.append('/root/bot/QChatGPT')
 import plugins.Emoticon-Girl.config as config
 import random
 
