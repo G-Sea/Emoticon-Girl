@@ -2,7 +2,7 @@ from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
 from mirai import Image
-from config import config
+from plugins.Emoticon-Girl.config import config
 import random
 
 """
