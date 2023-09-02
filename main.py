@@ -11,6 +11,10 @@ import random
 # 注册插件
 @register(name="Emoticon-Girl", description="表情包表达式转换", version="0.1", author="cillow")
 class HelloPlugin(Plugin):
+    # 插件加载时触发
+    # plugin_host (pkg.plugin.host.PluginHost) 提供了与主程序交互的一些方法，详细请查看其源码
+    def __init__(self, plugin_host: PluginHost):
+        pass
     
     # 当收到GPT回复时触发
     @on(NormalMessageResponded)
