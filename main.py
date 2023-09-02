@@ -21,7 +21,7 @@ class HelloPlugin(Plugin):
     def normal_message_responded(self, event: EventContext, **kwargs):
         response_text:str = kwargs['response_text']
 
-        emotion = {
+        emotions = {
     "love_forever":[
         'https://img1.ali213.net/glpic/2022/01/25/584_20220125101547775.png'
     ],
@@ -55,7 +55,7 @@ class HelloPlugin(Plugin):
             emotion = ma.group()[1:-1]
             logging.info(emotion)
 
-            emotion_dict: dict = emotion
+            emotion_dict: dict = emotions
             if emotion in emotion_dict.keys():
                 e_list = emotion_dict[emotion]
                 url = e_list[random.randint(0, len(e_list)-1)]
