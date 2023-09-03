@@ -55,13 +55,14 @@ class HelloPlugin(Plugin):
             emotion = ma.group()[1:-1]
             logging.info(emotion)
 
-            emotion_dict: dict = emotions
+            emotion_dict:dict = emotions
+            print(toemotion_dict)
             if emotion in emotion_dict.keys():
                 e_list = emotion_dict[emotion]
                 url = e_list[random.randint(0, len(e_list)-1)]
                 logging.debug('choose emotion: {}'.format(url))
                 img = [response_text.replace(ma.group(), '')]
-                if url.startswith('http'):
+                if url.startswith('https'):
                     img = [Image(url=url), response_text.replace(ma.group(), '')]
                 else:
                     pass
