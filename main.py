@@ -22,16 +22,16 @@ class HelloPlugin(Plugin):
         response_text:str = kwargs['response_text']
 
         emotions = {
-    "love_forever":[
+    "love":[
         'https://img1.ali213.net/glpic/2022/01/25/584_20220125101547775.png'
     ],
     "sad":[
         'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504258.jpg'
     ],
-    "i_don't_care":[
+    "idc":[
         'https://img1.ali213.net/glpic/2022/01/25/584_2022012510150485.png'
     ],
-    "i_am_die":[
+    "die":[
         'https://img1.ali213.net/glpic/2022/01/25/584_20220125101504878.png'
     ],
     "sorry":[
@@ -51,25 +51,23 @@ class HelloPlugin(Plugin):
         import re
         # 后续改一下正则
         ma = re.search('\:[a-z]+\:', response_text)
+        print(ma)
         if ma:
             emotion = ma.group()[1:-1]
             logging.info(emotion)
+            print(emotion)
 
             emotion_dict:dict = emotions
-            print(toemotion_dict)
             if emotion in emotion_dict.keys():
                 e_list = emotion_dict[emotion]
-                url = e_list[random.randint(0, len(e_list)-1)]
+                url = e_list
                 logging.debug('choose emotion: {}'.format(url))
                 img = [response_text.replace(ma.group(), '')]
                 if url.startswith('https'):
                     img = [Image(url=url), response_text.replace(ma.group(), '')]
                 else:
                     pass
-                    # 未成功
-                    # import os
-                    # img = [Image(path=os.path.join('plugins/emotion', url)), response_text.replace(ma.group(), '')]
-
+                    
                 event.add_return("reply", img)
                 event.prevent_default()
 
