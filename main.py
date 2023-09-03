@@ -2,8 +2,7 @@ from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
 from mirai import Image
-import random
-
+import re
 """
 在收到GPT接口回复时，检测“:xxx:”格式的表情包表达式，将其替换为Image"
 """
@@ -16,10 +15,9 @@ class HelloPlugin(Plugin):
     # plugin_host (pkg.plugin.host.PluginHost) 提供了与主程序交互的一些方法，详细请查看其源码
     def __init__(self, plugin_host: PluginHost):
         pass
-
-    # 当收到GPT回复时触发
     @on(NormalMessageResponded)
-    def normal_message_responded(self, event: EventContext, **kwargs):
+    # 当收到GPT回复时触发
+    def Emoticon(self, event: EventContext, **kwargs):
         response_text: str = kwargs['response_text']
 
         emotions = {
@@ -48,10 +46,10 @@ class HelloPlugin(Plugin):
                 'pic/resist.jpg']
         }
 
-        import re
+
         # 后续改一下正则
         ma = re.search('\:[a-z]+\:', response_text)
-        print(ma)
+                
         if ma:
             emotion = ma.group()[1:-1]
             logging.info(emotion)
@@ -63,11 +61,12 @@ class HelloPlugin(Plugin):
                 e_list = emotion_dict[emotion]
                 url = e_list
                 logging.debug('choose emotion: {}'.format(url))
+                
+                host: pkg.plugin.host.PluginHost = kwargs['host']
+                host.send_person_message(kwargs['launcher_id'], Image(url=url), response_text.replace(ma.group(), '')) if kwargs['launcher_type'] == 'person' else host.send_group_message(
+                kwargs['launcher_id'], Image(url=url), response_text.replace(ma.group(), ''))
+	
 
-                if kwargs["launcher_type"] == "group":
-                    host.send_group_message(kwargs["launcher_id"], Image(url=url), response_text.replace(ma.group(), ''))
-                else:
-                    host.send_person_message(kwargs["launcher_id"], Image(url=url), response_text.replace(ma.group(), ''))
 
     # 插件卸载时触发
     def __del__(self):
