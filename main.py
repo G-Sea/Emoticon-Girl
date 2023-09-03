@@ -9,7 +9,7 @@ import re
 
 
 # 注册插件
-@register(name="Emoticon-Girl", description="表情包表达式转换", version="0.1", author="cillow")
+@register(name="Emoticon-Girl", description="表情包表达式转换", version="0.1", author="ciallo")
 class HelloPlugin(Plugin):
     # 插件加载时触发
     # plugin_host (pkg.plugin.host.PluginHost) 提供了与主程序交互的一些方法，详细请查看其源码
@@ -20,6 +20,7 @@ class HelloPlugin(Plugin):
     def Emoticon(self, event: EventContext, **kwargs):
         response_text: str = kwargs['response_text']
 
+	# 表情字典，可指定文本和图片链接
         emotions = {
             "love": [
                 'https://img1.ali213.net/glpic/2022/01/25/584_20220125101547775.png'
@@ -46,27 +47,28 @@ class HelloPlugin(Plugin):
                 'pic/resist.jpg']
         }
 
-
         # 后续改一下正则
         ma = re.search('\:[a-z]+\:', response_text)
-                
+
         if ma:
             emotion = ma.group()[1:-1]
-            logging.info(emotion)
-            print(emotion)
-
-            emotion_dict: dict = emotions
-
-            if emotion in emotion_dict.keys():
-                e_list = emotion_dict[emotion]
-                url = e_list
+            if emotion in emotions.keys():
+		
+		# 获取表情指定url
+                url: str = emotions[emotion]
                 logging.debug('choose emotion: {}'.format(url))
-                
-                host: pkg.plugin.host.PluginHost = kwargs['host']
-                host.send_person_message(kwargs['launcher_id'], Image(url=url), response_text.replace(ma.group(), '')) if kwargs['launcher_type'] == 'person' else host.send_group_message(
-                kwargs['launcher_id'], Image(url=url), response_text.replace(ma.group(), ''))
-	
 
+		# 将回复处理掉表情文本
+		msg = response_text.replace(ma.group(), '')
+
+		# 分别发送文本和表情
+                host: pkg.plugin.host.PluginHost = kwargs['host']
+	        if kwargs['launcher_type'] == 'person' :
+	            host.send_person_message(kwargs['launcher_id'],msg)
+	            host.send_person_message(kwargs['launcher_id'], Image(url=url))
+	        else:
+	            host.send_group_message(kwargs['launcher_id'], msg)
+	            host.send_group_message(kwargs['launcher_id'], Image(url=url))
 
     # 插件卸载时触发
     def __del__(self):
